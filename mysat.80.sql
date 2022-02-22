@@ -202,7 +202,7 @@ select '<tr><td><a name="dp2"></a><b>Tablespace encryption</b>' ;
 select '<tr><td><a name="dp2a"></a>Encryption enabled' ;
 select if(count(*)>0, '<td class="pass">Pass', '<td class="med">Fail<td>No at-rest encryption<td>')
   from INFORMATION_SCHEMA.TABLES
- where CREATE_OPTIONS LIKE '%ENCRYPTION="Y"%';
+ where CREATE_OPTIONS LIKE '%ENCRYPTION="Y"%' OR CREATE_OPTIONS LIKE "%ENCRYPTION%='Y'";
 select '<tr><td><a name="dp2c"></a>Suspect sensitive tables' ;
 select '<td class="eval">Evaluate<td>Check suspect tables.columns: <td> ';
 SELECT distinct concat(table_schema, '.', table_name, '.', column_name)
